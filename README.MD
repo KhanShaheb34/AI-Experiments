@@ -9,6 +9,7 @@ Doing some experiments on the algorithms I studied on Artificial Intelligence co
 - [Breadth-First Search Algorithm](https://ai-experiments.vercel.app/algorithms/bfs.html)
 - [Depth-First Search Algorithm](https://ai-experiments.vercel.app/algorithms/dfs.html)
 - [Uniform Cost Search Algorithm](https://ai-experiments.vercel.app/algorithms/ucs.html)
+- [TicTacToe: Minimax](https://ai-experiments.vercel.app/algorithms/minimax.html)
 
 ## How to run
 
