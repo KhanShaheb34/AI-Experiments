@@ -63,6 +63,16 @@ export class Board {
     return this.board[i][j];
   }
 
+  public copy = () => {
+    const newBoard = new Board();
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        newBoard.makeMove(i, j, this.board[i][j]);
+      }
+    }
+    return newBoard;
+  };
+
   public draw(p5: P5, windowWidth: number) {
     const boxSize = windowWidth / 3;
     p5.stroke('#005f73');

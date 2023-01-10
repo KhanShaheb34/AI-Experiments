@@ -1,5 +1,6 @@
 import P5 from 'p5';
 import { Board, Player } from '../lib/board';
+import { findBestMove } from '../lib/minimax';
 
 let W = Math.min(window.innerWidth, window.innerHeight) * 0.7;
 let BOX_SIZE = W / 3;
@@ -12,7 +13,7 @@ const playerInfo = document.getElementById('player')!;
 resetButton.addEventListener('click', () => {
   gameOver = false;
   board = new Board();
-  player = 'X';
+  player = 'O';
   playerInfo.innerHTML = `Player: ${player}`;
 });
 
@@ -25,7 +26,7 @@ const sketch = (p5: P5) => {
   p5.setup = () => {
     p5.createCanvas(W, W);
     board = new Board();
-    player = 'X';
+    player = 'O';
   };
 
   p5.draw = () => {
@@ -34,6 +35,7 @@ const sketch = (p5: P5) => {
   };
 
   p5.windowResized = () => p5.resizeCanvas(W, W);
+
   p5.mousePressed = () => {
     if (gameOver) return;
 
@@ -42,14 +44,20 @@ const sketch = (p5: P5) => {
 
     if (i < 3 && i >= 0 && j < 3 && j >= 0 && board.get(i, j) === '') {
       board.makeMove(i, j, player);
-      player = player === 'X' ? 'O' : 'X';
+      player = 'X';
 
       playerInfo.innerHTML = `Player: ${player}`;
+
+      if (player === 'X') {
+        const bestMove = findBestMove(board.copy());
+        board.makeMove(bestMove[0], bestMove[1], 'X');
+        player = 'O';
+      }
 
       const winner = board.checkWin();
       if (winner) {
         gameOver = true;
-        playerInfo.innerHTML = `Winner: ${winner}`;
+        playerInfo.innerHTML = winner === 'T' ? 'Draw' : `Winner: ${winner}`;
       }
     }
   };
