@@ -48,16 +48,22 @@ const sketch = (p5: P5) => {
 
       playerInfo.innerHTML = `Player: ${player}`;
 
-      if (player === 'X') {
-        const bestMove = findBestMove(board.copy());
-        board.makeMove(bestMove[0], bestMove[1], 'X');
-        player = 'O';
-      }
-
-      const winner = board.checkWin();
+      let winner = board.checkWin();
       if (winner) {
         gameOver = true;
         playerInfo.innerHTML = winner === 'T' ? 'Draw' : `Winner: ${winner}`;
+      }
+
+      if (player === 'X' && !gameOver) {
+        const bestMove = findBestMove(board.copy());
+        board.makeMove(bestMove[0], bestMove[1], 'X');
+        player = 'O';
+
+        winner = board.checkWin();
+        if (winner) {
+          gameOver = true;
+          playerInfo.innerHTML = winner === 'T' ? 'Draw' : `Winner: ${winner}`;
+        }
       }
     }
   };
