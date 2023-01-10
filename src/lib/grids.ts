@@ -1,5 +1,5 @@
 import P5 from 'p5';
-import { GridState } from './types/grid';
+import { GridState } from '../types/grid';
 
 export class Grid {
   public state: GridState;

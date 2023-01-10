@@ -1,6 +1,6 @@
 import P5 from 'p5';
 import { Grid } from './grids';
-import { GridState } from './types/grid';
+import { GridState } from '../types/grid';
 
 export class Display {
   public grids: Grid[][];

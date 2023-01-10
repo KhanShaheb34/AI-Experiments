@@ -1,6 +1,6 @@
-import { Display } from './display';
-import { Grid } from './grids';
-import { toggleWall } from './lib/toggleWall';
+import { Display } from '../lib/display';
+import { Grid } from '../lib/grids';
+import { toggleWall } from '../lib/toggleWall';
 import P5 from 'p5';
 
 let W = Math.min(window.innerWidth, window.innerHeight) * 0.7;

@@ -1,5 +1,5 @@
 import P5 from 'p5';
-import { Display } from '../display';
+import { Display } from './display';
 
 export const toggleWall = (p5: P5, display: Display, gridSize: number) => {
   const j = Math.floor(p5.mouseX / gridSize);
