@@ -15,23 +15,23 @@ Doing some experiments on the algorithms I studied on Artificial Intelligence co
 Installed necessary packages:
 
 ```sh
-yarn or npm
+yarn
 ```
 
 To run the development build:
 
 ```sh
-yarn dev or npm run dev
+yarn dev
 ```
 
 To run the production build:
 
 ```sh
-yarn build or npm run build
+yarn build
 ```
 
 To preview the production build:
 
 ```sh
-yarn preview or npm run preview
+yarn preview
 ```
