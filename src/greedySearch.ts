@@ -17,7 +17,7 @@ startButton.addEventListener('click', () => {
   if (done) window.location.reload();
 
   started = !started;
-  startButton.innerHTML = done ? 'Restart' : started ? 'Pause' : 'Start';
+  startButton.innerHTML = started ? 'Pause' : 'Start';
 });
 
 window.addEventListener('resize', () => {
@@ -44,14 +44,12 @@ const sketch = (p5: P5) => {
     start = display.get(START[0], START[1]);
     end = display.get(END[0], END[1]);
     openSet.push(start);
-    start.g = 0;
-    start.f = start.g + start.h;
   };
 
   p5.draw = () => {
     if (started) {
       if (openSet.length > 0 && !done) {
-        openSet.sort((a, b) => a.f - b.f);
+        openSet.sort((a, b) => a.h - b.h);
         current = openSet.shift()!;
         if (current.state === 'empty') current.changeState('current');
         closedSet.push(current);
@@ -73,19 +71,8 @@ const sketch = (p5: P5) => {
         for (const neighbor of neighbors) {
           if (closedSet.includes(neighbor)) continue;
           if (neighbor.state === 'wall') continue;
-
-          const tempG = current.g + 1;
-          if (openSet.includes(neighbor)) {
-            if (tempG < neighbor.g) {
-              neighbor.g = tempG;
-              cameFrom.set(neighbor, current);
-
-              neighbor.f = neighbor.g + neighbor.h;
-            }
-          } else {
-            neighbor.g = tempG;
+          if (!openSet.includes(neighbor)) {
             cameFrom.set(neighbor, current);
-            neighbor.f = neighbor.g + neighbor.h;
             openSet.push(neighbor);
           }
         }
@@ -99,6 +86,7 @@ const sketch = (p5: P5) => {
     display.draw(p5);
     if (started && current.state !== 'start' && current.state !== 'end')
       current.changeState('visited');
+    if (done) startButton.innerHTML = 'Restart';
   };
 
   p5.windowResized = () => p5.resizeCanvas(W, W);

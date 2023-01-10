@@ -60,4 +60,8 @@ export class Display {
       });
     });
   };
+
+  public reset = () => {
+    this.grids = this.createEmptyGrids();
+  };
 }
