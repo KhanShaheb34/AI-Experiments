@@ -98,6 +98,7 @@ const sketch = (p5: P5) => {
     display.draw(p5);
     if (started && current.state !== 'start' && current.state !== 'end')
       current.changeState('visited');
+    if (done) startButton.innerHTML = 'Restart';
   };
 
   p5.windowResized = () => p5.resizeCanvas(W, W);
