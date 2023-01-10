@@ -4,7 +4,11 @@ Doing some experiments on the algorithms I studied on Artificial Intelligence co
 
 ## Algorithms
 
-- A\* Searching Algorithm
+- [A\* Search Algorithm](https://ai-experiments.vercel.app/algorithms/astar-search.html)
+- [Greedy Search Algorithm](https://ai-experiments.vercel.app/algorithms/greedy-search.html)
+- [Breadth-First Search Algorithm](https://ai-experiments.vercel.app/algorithms/bfs.html)
+- [Depth-First Search Algorithm](https://ai-experiments.vercel.app/algorithms/dfs.html)
+- [Uniform Cost Search Algorithm](https://ai-experiments.vercel.app/algorithms/ucs.html)
 
 ## How to run
 
