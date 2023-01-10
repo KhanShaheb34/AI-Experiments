@@ -11,6 +11,7 @@ export default defineConfig({
         bfs: resolve(__dirname, 'algorithms/bfs.html'),
         ucs: resolve(__dirname, 'algorithms/ucs.html'),
         dfs: resolve(__dirname, 'algorithms/dfs.html'),
+        minimax: resolve(__dirname, 'algorithms/minimax.html'),
       },
     },
   },
